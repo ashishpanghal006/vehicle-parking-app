@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Activity Report - {{ month }}</title>
+</head>
+<body style="font-family: Arial;">
+    <h2>Hello {{ data.username }}</h2>
+
+    <p><b>Monthly Parking Report - {{ data.month }}</b></p>
+
+    <ul>
+        <li>Total Bookings: {{ data.total_bookings }}</li>
+        <li>Most Used Parking Lot: {{ data.most_used_lot }}</li>
+    </ul>
+
+    <h3>Booking Details</h3>
+    <table border="1" cellpadding="6" cellspacing="0">
+        <tr>
+            <th>Lot</th>
+            <th>Spot</th>
+            <th>Parked At</th>
+            <th>Left At</th>
+        </tr>
+        {% for b in data.bookings %}
+        <tr>
+            <td>{{ b.lot }}</td>
+            <td>{{ b.spot_id }}</td>
+            <td>{{ b.parked_at }}</td>
+            <td>{{ b.left_at or '-' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p style="margin-top:20px">
+        Thanks for using <b>ParkIn</b>
+    </p>
+</body>
+</html>
